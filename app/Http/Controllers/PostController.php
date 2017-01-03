@@ -33,11 +33,23 @@ class PostController extends Controller
 
 	public function getDeletePost($post_id)
 	{
-		$post = Post::find($post_id)->first();
+
+		$post = Post::where('id', $post_id)->first();
 		if(Auth::user() != $post->user){
 			return redirect()->back();
 		}
 		$post->delete();
-		return redirect('dashboard')->with(['message' => 'Successfully deleted!']);
+		return redirect()->route('dashboard')->with(['message'=>'Successfully deleteted!']);
+	}	
+
+	public function postEditPost(Request $request)
+	{
+		$this->validate($request,[
+			'body' => 'required'
+		]);
+		$post = Post::find($request['postId']);
+		$post->body = $request['body'];
+		$post->update();
+		return response()->json(['new_body' => $post->body],200);
 	}
 }
