@@ -26,7 +26,7 @@
 						Posted by {{ $post->user->first_name }} on {{ $post->created_at }}
 					</div>
 					<div class="interaction">
-						<a href="#" class="like">Like</a> |
+						<a href="#" class="like">{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ? 'You like this post' : 'Like' : 'Like' }}</a> |
 						<a href="#" class="like">Dislike</a> 
 						@if(Auth::user() == $post->user)
 						|

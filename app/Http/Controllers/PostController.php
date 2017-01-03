@@ -64,15 +64,15 @@ class PostController extends Controller
 			return null;
 		}
 		$user = Auth::user();
-		$like = $user->likes()->where('post_id', $post_id)->first();
+		$ike = $user->likes()->where('post_id', $post_id)->first();
 		if($like){
 			$already_like = $like->like;
 			$update = true;
-			if($already_like == $isLike){
+			if($already_like == $is_like){
 				$like->delete();
 				return null;
 			}
-		} else {
+		}else{
 			$like = new Like();
 		}
 		$like->like = $is_like;
@@ -84,5 +84,5 @@ class PostController extends Controller
 			$like->save();
 		}
 		return null;
- 	}
+  	}
 }

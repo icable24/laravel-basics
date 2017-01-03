@@ -25,7 +25,7 @@
 
 					</div>
 					<div class="interaction">
-						<a href="#" class="like">Like</a> |
+						<a href="#" class="like"><?php echo e(Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ? 'You like this post' : 'Like' : 'Like'); ?></a> |
 						<a href="#" class="like">Dislike</a> 
 						<?php if(Auth::user() == $post->user): ?>
 						|
