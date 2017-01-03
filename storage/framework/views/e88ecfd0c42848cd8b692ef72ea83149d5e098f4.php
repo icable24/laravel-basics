@@ -25,8 +25,8 @@
 
 					</div>
 					<div class="interaction">
-						<a href="#">Like</a> |
-						<a href="#">Dislike</a> 
+						<a href="#" class="like">Like</a> |
+						<a href="#" class="like">Dislike</a> 
 						<?php if(Auth::user() == $post->user): ?>
 						|
 						<a href="#" class="edit">Edit</a> |
@@ -64,7 +64,8 @@
 
 <script>
 	var token = '<?php echo e(Session::token()); ?>';
-	var url ='<?php echo e(route('edit')); ?>';
+	var urlEdit ='<?php echo e(route('edit')); ?>';
+	var urlLike = '<?php echo e(route('like')); ?>';
 </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -26,8 +26,8 @@
 						Posted by {{ $post->user->first_name }} on {{ $post->created_at }}
 					</div>
 					<div class="interaction">
-						<a href="#">Like</a> |
-						<a href="#">Dislike</a> 
+						<a href="#" class="like">Like</a> |
+						<a href="#" class="like">Dislike</a> 
 						@if(Auth::user() == $post->user)
 						|
 						<a href="#" class="edit">Edit</a> |
@@ -65,6 +65,7 @@
 
 <script>
 	var token = '{{ Session::token() }}';
-	var url ='{{ route('edit') }}';
+	var urlEdit ='{{ route('edit') }}';
+	var urlLike = '{{ route('like') }}';
 </script>
 @endsection
